@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <link href="/src/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold mb-6 text-center">Certificate Generator</h1>
+            
+            <div class="space-y-4">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Certificate Template</label>
+                    <input type="file" id="certificateImage" accept="image/*" 
+                           class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                    <input type="text" id="nameInput" 
+                           class="w-full p-2 border border-gray-300 rounded-md"
+                           placeholder="Enter name here">
+                </div>
+
+                <div class="grid grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Text Alignment</label>
+                        <select id="textAlignInput" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="left">Left</option>
+                            <option value="center" selected>Center</option>
+                            <option value="right">Right</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Font Family</label>
+                        <select id="fontFamilyInput" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="Arial">Arial</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Playfair Display">Playfair Display</option>
+                            <option value="Open Sans">Open Sans</option>
+                            <option value="Montserrat">Montserrat</option>
+                            <option value="Lato">Lato</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Font Weight</label>
+                        <select id="fontWeightInput" class="w-full p-2 border border-gray-300 rounded-md">
+                            <option value="normal">Normal</option>
+                            <option value="bold">Bold</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Font Size</label>
+                        <input type="number" id="fontSizeInput" value="48" min="20" max="100"
+                               class="w-full p-2 border border-gray-300 rounded-md">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Font Color</label>
+                    <input type="color" id="fontColorInput" value="#000000" 
+                           class="w-full h-10">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Paper Size</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <select id="paperSizeInput" class="w-full p-2 border border-gray-300 rounded-md">
+                                <option value="a4">A4 (210×297mm)</option>
+                                <option value="a5">A5 (148×210mm)</option>
+                                <option value="letter">Letter (216×279mm)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="orientationInput" class="w-full p-2 border border-gray-300 rounded-md">
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="canvas-container" class="relative border-2 border-dashed border-gray-300 rounded-lg p-4 min-h-[400px] flex items-center justify-center">
+                    <canvas id="certificateCanvas"></canvas>
+                    <div id="draggableText" class="absolute hidden cursor-move px-2 py-1 bg-white/50 rounded select-none text-center"></div>
+                    <div id="placeholder" class="text-gray-400">Upload a certificate template to begin</div>
+                </div>
+
+                <button id="downloadBtn" 
+                        class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-300"
+                        disabled>
+                    Download Certificate
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
